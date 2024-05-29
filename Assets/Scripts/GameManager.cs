@@ -1,3 +1,4 @@
+using Cinemachine;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.Playables;
@@ -8,6 +9,8 @@ public class GameManager : MonoBehaviour
     private PlayerMotor playermotor;
     private Animator _Playeranimator;
     private Animator _DogAnimator;
+
+    public CinemachineVirtualCamera _VirtualCam;
 
     public bool IsGameStarted = false;
     void Awake()
@@ -29,9 +32,9 @@ public class GameManager : MonoBehaviour
     }
     IEnumerator TurnOffCutSceneCam()
     {
-        yield return new WaitForSeconds(3.5f);
-        director.Pause();
-      
+        yield return new WaitForSeconds(4f);
+     //   director.Pause();
+        _VirtualCam.Priority = 12;
     }
    
 }

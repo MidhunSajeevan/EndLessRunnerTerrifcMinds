@@ -29,17 +29,18 @@ public class PlayerMotor : MonoBehaviour
         Jump();
         Sliding();
         _characterController.Move(_movementVector * Time.deltaTime);
+
+    
     }
     void FixedUpdate()
     {
-      
         //Call charecter Movement fuctions
-        if(_isCutsceneComplete)
+        if (_isCutsceneComplete)
             Movement();
         Gravitaion();
-       
+
         _characterController.Move(_movementVector * Time.deltaTime);
-        
+
     }
 
 
