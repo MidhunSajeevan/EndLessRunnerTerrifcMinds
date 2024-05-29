@@ -8,15 +8,19 @@ public class PlayerMotor : MonoBehaviour
     private float _movementSpeed = 6f;
     private float _gravity = 9.89f;
     private float _jupmHeight = 5f;
+    public bool _isCutsceneComplete = false;
 
     [SerializeField] AnimationClip _slidingClip;
 
     private Animator  animator;
+
+
+   
     void Start()
     {
         _characterController = GetComponent<CharacterController>();
         animator = GetComponent<Animator>();
-        
+
     }
 
     private void Update()
@@ -28,14 +32,16 @@ public class PlayerMotor : MonoBehaviour
     }
     void FixedUpdate()
     {
+      
         //Call charecter Movement fuctions
-
-        Movement();
+        if(_isCutsceneComplete)
+            Movement();
         Gravitaion();
        
         _characterController.Move(_movementVector * Time.deltaTime);
         
     }
+
 
     public void Movement()
     {
@@ -106,5 +112,6 @@ public class PlayerMotor : MonoBehaviour
         _characterController.center = originalControler;
   
     }
+  
   
 }
