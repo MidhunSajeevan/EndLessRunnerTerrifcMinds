@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class PlayerMotor : MonoBehaviour
@@ -7,20 +8,31 @@ public class PlayerMotor : MonoBehaviour
     private float _movementSpeed = 6f;
     private float _gravity = 9.89f;
     private float _jupmHeight = 5f;
+
+    [SerializeField] AnimationClip _slidingClip;
+
+    private Animator  animator;
     void Start()
     {
         _characterController = GetComponent<CharacterController>();
+        animator = GetComponent<Animator>();
         
     }
 
+    private void Update()
+    {
+        SideMovements();
+        Jump();
+        Sliding();
+        _characterController.Move(_movementVector * Time.deltaTime);
+    }
     void FixedUpdate()
     {
         //Call charecter Movement fuctions
 
         Movement();
         Gravitaion();
-        SideMovements();
-        Jump();
+       
         _characterController.Move(_movementVector * Time.deltaTime);
         
     }
@@ -31,6 +43,9 @@ public class PlayerMotor : MonoBehaviour
 
         _movementVector.z = _movementSpeed;
 
+        // Animations add
+
+        animator.SetBool("running",true);
     }
     public void Gravitaion()
     {
@@ -57,8 +72,39 @@ public class PlayerMotor : MonoBehaviour
         
         if ( Input.GetButton("Jump") &&_characterController.isGrounded)
         {
-            _movementVector.y = _jupmHeight;
+            animator.SetBool("jump",true) ;
+            _movementVector.y = Mathf.Sqrt(_jupmHeight);
+     
         }
     
     }
+    public void Sliding()
+    {
+        // Add Sliding functionalities
+        if(Input.GetKeyDown(KeyCode.DownArrow) && _characterController.isGrounded)
+        {
+            StartCoroutine(Slide());
+        }
+    }
+    private IEnumerator Slide()
+    {
+        //Shrink the collider
+        Vector3 originalControler = _characterController.center;
+        Vector3 newControler  = originalControler;
+        _characterController.height /= 2f;
+        newControler.y -= _characterController.height / 2f;
+        _characterController.center = newControler;
+
+        animator.SetTrigger("slide");
+
+        // Wait until the animation is complete
+        yield return new WaitForSeconds(_slidingClip.length);
+        
+
+        // Animation is complete  set the controler back to normal
+        _characterController.height *= 2f;
+        _characterController.center = originalControler;
+  
+    }
+  
 }
