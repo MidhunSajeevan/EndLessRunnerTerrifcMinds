@@ -4,12 +4,9 @@ using UnityEngine;
 public class TilePool : MonoBehaviour
 {
     public GameObject[] tilePrefabs;
-    private List<GameObject> availableTiles;
+    private List<GameObject> availableTiles = new List<GameObject>();
 
-    void Start()
-    {
-        availableTiles = new List<GameObject>();
-    }
+   
 
     public GameObject GetTile(int prefabIndex)
     {

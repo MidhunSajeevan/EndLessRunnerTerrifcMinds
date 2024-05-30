@@ -14,9 +14,9 @@ public class DogMotor : MonoBehaviour
 
     private void Start()
     {
-        animator = GetComponent<Animator>();
-        gameManager = FindAnyObjectByType<GameManager>();
-        playerTransform = GameObject.FindGameObjectWithTag("Player").transform; // Assuming the player has the tag "Player"
+        //Ininitalize all References
+        References();
+   
     }
 
     void Update()
@@ -24,9 +24,23 @@ public class DogMotor : MonoBehaviour
         // Follow the player with an offset
         if (gameManager.IsGameStarted)
         {
+            animator.SetBool("Run", true);
             Vector3 targetPosition = playerTransform.position + playerTransform.TransformDirection(offset);
             Vector3 direction = (targetPosition - transform.position).normalized;
             transform.position += direction * speed * Time.deltaTime;
         }
     }
+
+
+
+    #region REFERENCES
+
+    void References()
+    {
+        animator = GetComponent<Animator>();
+        gameManager = FindAnyObjectByType<GameManager>();
+        playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
+        animator = GetComponent<Animator>();    
+    }
+    #endregion
 }

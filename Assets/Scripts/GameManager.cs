@@ -8,33 +8,54 @@ public class GameManager : MonoBehaviour
     private PlayableDirector director;
     private PlayerMotor playermotor;
     private Animator _Playeranimator;
-    private Animator _DogAnimator;
+   
 
     public CinemachineVirtualCamera _VirtualCam;
 
     public bool IsGameStarted = false;
     void Awake()
     {
-        director = FindAnyObjectByType<PlayableDirector>();
-        playermotor = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMotor>();
-        _Playeranimator = GameObject.FindGameObjectWithTag("Player").GetComponent<Animator>();
-        _DogAnimator = GameObject.Find("Dog").GetComponent<Animator>();
+        //Ininitalize all References
+        References();
     }
 
     public void StartGame()
     {
-        IsGameStarted = true;
-        _DogAnimator.SetBool("Run", true);
-        director.Play();
-        playermotor._isCutsceneComplete = true;
-        _Playeranimator.SetBool("start",true);
-        StartCoroutine(TurnOffCutSceneCam());
+        //Execute Intial logics
+        IntialLogics();
     }
     IEnumerator TurnOffCutSceneCam()
     {
         yield return new WaitForSeconds(4f);
-     //   director.Pause();
         _VirtualCam.Priority = 12;
     }
    
+    public void OnGameOver()
+    {
+        Time.timeScale = 0;
+    }
+
+
+    #region INITIAL_LOGICS
+
+    void IntialLogics()
+    {
+        GameEvents.GameOver += OnGameOver;
+        IsGameStarted = true;
+        director.Play();
+        playermotor._isCutsceneComplete = true;
+        _Playeranimator.SetBool("start", true);
+        StartCoroutine(TurnOffCutSceneCam());
+    }
+    #endregion
+
+    #region REFERENCES
+
+    void References()
+    {
+        director = FindAnyObjectByType<PlayableDirector>();
+        playermotor = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMotor>();
+        _Playeranimator = GameObject.FindGameObjectWithTag("Player").GetComponent<Animator>();
+    }
+    #endregion
 }

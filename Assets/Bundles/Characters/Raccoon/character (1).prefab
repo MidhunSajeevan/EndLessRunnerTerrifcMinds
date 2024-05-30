@@ -25,8 +25,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 86532631257469546}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.03391771, y: 0.03391771, z: -0.70629287, w: 0.70629287}
-  m_LocalPosition: {x: 0.00007020135, y: 0.36624643, z: -0.0061927387}
+  m_LocalRotation: {x: 0.08931808, y: 0.08762401, z: -0.67233723, w: 0.7295937}
+  m_LocalPosition: {x: -0.014880955, y: 0.3974911, z: 0.060120583}
   m_LocalScale: {x: 1.0000002, y: 1, z: 0.9999999}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -187,6 +187,7 @@ GameObject:
   - component: {fileID: 8135655761136970791}
   - component: {fileID: 2079313892085180353}
   - component: {fileID: 8490488264461669842}
+  - component: {fileID: 1928910697276150371}
   m_Layer: 0
   m_Name: character (1)
   m_TagString: Player
@@ -300,7 +301,7 @@ AudioSource:
       outWeight: 0.33333334
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 0
+    m_RotationOrder: 4
   spreadCustomCurve:
     serializedVersion: 2
     m_Curve:
@@ -315,7 +316,7 @@ AudioSource:
       outWeight: 0.33333334
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 0
+    m_RotationOrder: 4
   reverbZoneMixCustomCurve:
     serializedVersion: 2
     m_Curve:
@@ -330,7 +331,7 @@ AudioSource:
       outWeight: 0.33333334
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 0
+    m_RotationOrder: 4
 --- !u!143 &2079313892085180353
 CharacterController:
   m_ObjectHideFlags: 0
@@ -369,7 +370,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7fd391b5588709f4daf106f3bc43f991, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _isCutsceneComplete: 0
   _slidingClip: {fileID: 7400000, guid: 338ca931512ed4d499c62400a8ac2ab2, type: 2}
+--- !u!114 &1928910697276150371
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3872041597280513390}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f0b9501c3a267e42aa771c51cde3cc4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6471795370984981547
 GameObject:
   m_ObjectHideFlags: 0
@@ -395,8 +409,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6471795370984981547}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.019517198, y: -0.019517198, z: -0.7068374, w: 0.7068374}
-  m_LocalPosition: {x: 0.00007020135, y: 0.55561984, z: -0.0007208702}
+  m_LocalRotation: {x: -0.10788103, y: 0.052715562, z: -0.7110804, w: 0.6927824}
+  m_LocalPosition: {x: -0.0148809515, y: 0.43769687, z: 0.06399059}
   m_LocalScale: {x: 1.0000002, y: 1.0000005, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

@@ -28,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 1000010277312714}
   serializedVersion: 2
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0, z: -0.002}
+  m_LocalPosition: {x: -0.035, y: 0, z: -0.002}
   m_LocalScale: {x: 1.6303957, y: 2.0079541, z: 1.6303958}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -120,6 +120,7 @@ GameObject:
   - component: {fileID: 111000013449658098}
   - component: {fileID: 65000012973518938}
   - component: {fileID: 82000011322008754}
+  - component: {fileID: 4420430823085712582}
   m_Layer: 9
   m_Name: ObstacleBin
   m_TagString: Untagged
@@ -135,7 +136,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1000011638144408}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -280,6 +281,18 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
+--- !u!114 &4420430823085712582
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1000011638144408}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f0b9501c3a267e42aa771c51cde3cc4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1000012535006976
 GameObject:
   m_ObjectHideFlags: 0

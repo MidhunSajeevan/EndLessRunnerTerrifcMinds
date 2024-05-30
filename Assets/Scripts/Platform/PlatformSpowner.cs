@@ -5,10 +5,10 @@ public class PlatformSpowner : MonoBehaviour
 {
     public TilePool tilePool;
     private Transform playerTransform;
-    private float spawnZ = -12.0f;
-    private float safeZone = 25f;
-    private float tileLength = 12f;
-    private int amtTilesOnScreen = 7;
+    private float spawnZ = -18.0f;
+    private float safeZone = 20f;
+    private float tileLength = 18f;
+    private int amtTilesOnScreen = 20;
     private List<GameObject> activeTiles;
     private int lastPrefabIndex = 0;
 
@@ -19,8 +19,14 @@ public class PlatformSpowner : MonoBehaviour
 
         for (int i = 0; i < amtTilesOnScreen; i++)
         {
-            if (i < 2)
+            if(i == 0)
+            {
                 SpawnTile(0);
+                activeTiles.RemoveAt(0);
+            }
+               
+            if (i > 0 && i < 15)
+                SpawnTile(1);
             else
                 SpawnTile();
         }
@@ -54,12 +60,12 @@ public class PlatformSpowner : MonoBehaviour
     private int RandomPrefabIndex()
     {
         if (tilePool.tilePrefabs.Length <= 1)
-            return 0;
+            return 1;
 
         int randomIndex = lastPrefabIndex;
         while (randomIndex == lastPrefabIndex)
         {
-            randomIndex = Random.Range(0, tilePool.tilePrefabs.Length);
+            randomIndex = Random.Range(1, tilePool.tilePrefabs.Length);
         }
         lastPrefabIndex = randomIndex;
         return randomIndex;
