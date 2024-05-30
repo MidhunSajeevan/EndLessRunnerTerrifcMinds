@@ -9,10 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b6935a4a17d252f4490f1cc470ccf931, type: 3}
-  m_Name: FishBone
+  m_Script: {fileID: 11500000, guid: 1d5535f6818daa1409a908449ea87210, type: 3}
+  m_Name: FishBox
   m_EditorClassIdentifier: 
-  Name: FishBone
-  value: 1
-  ObjectPrefab: {fileID: 4146704025290146487, guid: b6f8034b638715149803f6dd1a4b5327,
+  amount: 2
+  ItemPrefab: {fileID: 7244195245053866565, guid: ac3c86c2382618643bfda6ab3cc81a0b,
     type: 3}
+  ItemName: FishBox

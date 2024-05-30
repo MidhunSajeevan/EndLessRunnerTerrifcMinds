@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerMotor : MonoBehaviour
@@ -10,10 +11,14 @@ public class PlayerMotor : MonoBehaviour
     private float _jupmHeight = 5f;
     public bool _isCutsceneComplete = false;
 
+    public DataScriptableObject playerData;
+
     [SerializeField] AnimationClip _slidingClip;
 
-    private Animator  animator;
+ 
 
+    private Animator  animator;
+ 
 
    
     void Start()
@@ -79,9 +84,10 @@ public class PlayerMotor : MonoBehaviour
         
         if ( Input.GetButton("Jump") &&_characterController.isGrounded)
         {
+          
             animator.SetBool("jump",true) ;
             _movementVector.y = Mathf.Sqrt(_jupmHeight);
-     
+            
         }
     
     }

@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class DogMotor : MonoBehaviour
@@ -11,7 +12,8 @@ public class DogMotor : MonoBehaviour
     private Animator animator;
     private GameManager gameManager;
     private Transform playerTransform;
-
+    private AudioSource source;
+    private bool AudioPlayed=false;
     private void Start()
     {
         //Ininitalize all References
@@ -22,15 +24,29 @@ public class DogMotor : MonoBehaviour
     void Update()
     {
         // Follow the player with an offset
-        if (gameManager.IsGameStarted)
+        if (gameManager.isGameStarted)
         {
             animator.SetBool("Run", true);
             Vector3 targetPosition = playerTransform.position + playerTransform.TransformDirection(offset);
             Vector3 direction = (targetPosition - transform.position).normalized;
             transform.position += direction * speed * Time.deltaTime;
+
+
+            if (!AudioPlayed)
+            {
+                source.Play();
+                AudioPlayed = true;
+                StartCoroutine(AudioPlayDeley());
+            }
         }
+
     }
 
+    IEnumerator AudioPlayDeley()
+    {
+        yield return new WaitForSeconds(20f);
+        AudioPlayed=false;
+    }
 
 
     #region REFERENCES
@@ -41,6 +57,7 @@ public class DogMotor : MonoBehaviour
         gameManager = FindAnyObjectByType<GameManager>();
         playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
         animator = GetComponent<Animator>();    
+        source = GetComponent<AudioSource>();
     }
     #endregion
 }

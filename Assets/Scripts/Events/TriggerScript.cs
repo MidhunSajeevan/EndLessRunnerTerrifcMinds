@@ -7,7 +7,8 @@ public class TriggerScript : MonoBehaviour
     {
         if(other.gameObject.CompareTag("Player"))
         {
-            Debug.Log("Player Collided");
+      
+            //Invoke Game over Event when the player collided with an obstacle
             GameEvents.GameOver.Invoke();
         }
     }
