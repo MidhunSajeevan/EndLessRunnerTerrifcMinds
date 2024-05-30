@@ -60,6 +60,13 @@ public class GameManager : MonoBehaviour
     {
         Application.Quit();
     }
+
+    public void PouseGame(int val)
+    {
+        Time.timeScale = val;
+    }
+
+
     // Method to execute logic when the game is over.
     public void OnGameOver()
     {
